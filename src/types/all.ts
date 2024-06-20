@@ -3,8 +3,8 @@ type TLocation = {
     longitude: number;
 }
 type THour = {
-    initial_hour: string;
-    final_hour: string;
+    initial_hour: any;
+    final_hour: any;
 }
 type TOrphanage = {
     name: string;
@@ -14,3 +14,5 @@ type TOrphanage = {
     hours: THour;
     location: TLocation;
 }
+
+export { TOrphanage }

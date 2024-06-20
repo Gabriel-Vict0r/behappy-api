@@ -1,11 +1,15 @@
 import { PrismaClient } from "@prisma/client";
+import customParseFormat from 'dayjs/plugin/customParseFormat'
 
+import dayjs from "dayjs";
 
-
+dayjs.extend(customParseFormat)
 export class CreateOrphanageService {
     async execute(orphanage: TOrphanage) {
         const prisma = new PrismaClient();
         const { name, about, acept_weekend, instructions } = orphanage
+        const test = dayjs(orphanage.hours.initial_hour, 'HH:mm:ss').toISOString();
+        console.log(test)
         const newOrph = await prisma.location.create({
             data: {
                 ...orphanage.location,
@@ -17,7 +21,8 @@ export class CreateOrphanageService {
                         acept_weekend: acept_weekend,
                         hours: {
                             create: {
-                                ...orphanage.hours
+                                initial_hour: dayjs(orphanage.hours.initial_hour, 'HH:mm:ss').toISOString(),
+                                final_hour: dayjs(orphanage.hours.final_hour, 'HH:mm:ss').toISOString(),
                             }
                         }
                     },
@@ -27,6 +32,9 @@ export class CreateOrphanageService {
                 orphanage: true,
             }
         })
-        return newOrph;
+        if (!newOrph) {
+            throw new Error('erro ao cadastrar')
+        }
+        return newOrph
     }
 }
