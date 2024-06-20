@@ -1,14 +1,12 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { CreateOrphanageService } from "../services/CreateOrphanageService";
 import dayjs from "dayjs";
 
 
 
 export class CreateOrphanageController {
-    async handle(req: Request, res: Response) {
+    async handle(req: Request, res: Response, next: NextFunction) {
         const orphanage = req.body
-        const test = dayjs(orphanage.hours.initial_hour, 'HH:mm:ss').toISOString();
-        console.log(test)
         //console.log(req.body)
         //orphanage = JSON.parse(orphanage);
         //console.log(orphanage)
@@ -16,8 +14,10 @@ export class CreateOrphanageController {
         const result = await service.execute(orphanage);
 
         if (result instanceof Error) {
-            return res.status(401).json(result.message)
+            return res.status(400).json(result.message)
         }
-        return res.status(200).json(result);
+        req.resultId = result.orphanage[0].id;
+        next();
+        //return res.status(201).json(result);
     }
 }
