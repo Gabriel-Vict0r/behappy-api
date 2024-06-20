@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model admin {
+  id       Int    @id() @default(autoincrement())
+  name     String
+  email    String @unique
+  password String
+}
+
+model location {
+  id        Int         @id() @default(autoincrement())
+  latitude  Decimal     @db.Decimal()
+  longitude Decimal     @db.Decimal()
+  orphanage orphanage[]
+}
+
+model orphanage {
+  id            Int       @id() @default(autoincrement())
+  name          String
+  about         String    @db.Text
+  instructions  String    @db.Text
+  acept_weekend Boolean   @db.Boolean
+  acepted       Boolean   @default(false) @db.Boolean
+  location      location  @relation(fields: [id_location], references: [id])
+  id_location   Int
+  pictures      picture[]
+  hours         hours[]
+}
+
+model picture {
+  id           Int       @id() @default(autoincrement())
+  url          String
+  orphanage    orphanage @relation(fields: [id_orphanage], references: [id])
+  id_orphanage Int
+}
+
+model hours {
+  id           Int       @id() @default(autoincrement())
+  initial_hour DateTime  @db.Time()
+  final_hour   DateTime  @db.Time()
+  orphanage    orphanage @relation(fields: [id_orphanage], references: [id])
+  id_orphanage Int
+}
