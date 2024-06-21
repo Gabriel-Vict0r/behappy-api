@@ -6,7 +6,8 @@ import dayjs from "dayjs";
 
 export class CreateOrphanageController {
     async handle(req: Request, res: Response, next: NextFunction) {
-        const orphanage = req.body
+        let { orphanage } = req.body
+        orphanage = JSON.parse(orphanage)
         //console.log(req.body)
         //orphanage = JSON.parse(orphanage);
         //console.log(orphanage)

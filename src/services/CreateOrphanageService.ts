@@ -9,6 +9,7 @@ export class CreateOrphanageService {
     async execute(orphanage: TOrphanage) {
         const prisma = new PrismaClient();
         const { name, about, acept_weekend, instructions } = orphanage
+        //console.log('HORAS', orphanage.hours.initial_hour)
         try {
             const newOrph = await prisma.location.create({
                 data: {

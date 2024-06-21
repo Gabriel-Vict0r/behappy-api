@@ -21,7 +21,9 @@ const linkSchema: ObjectSchema<TOrphanage> = object({
     })
 })
 const validateData = async (req: Request, res: Response, next: NextFunction) => {
-    const orphanage = req.body
+    let { orphanage } = req.body
+    orphanage = JSON.parse(orphanage)
+    console.log(orphanage)
     try {
         await linkSchema.validate(orphanage);
         return next();

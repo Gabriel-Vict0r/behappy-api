@@ -1,3 +1,5 @@
+import { orphanage, picture } from "@prisma/client";
+
 type TLocation = {
     latitude: number;
     longitude: number;
@@ -15,4 +17,9 @@ type TOrphanage = {
     location: TLocation;
 }
 
-export { TOrphanage }
+interface IImage {
+    id_orphanage: number;
+    url: string;
+}
+type IResultOrphanage = picture[] & orphanage | null
+export { TOrphanage, IImage, IResultOrphanage }
