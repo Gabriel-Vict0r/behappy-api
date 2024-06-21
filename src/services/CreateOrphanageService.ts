@@ -22,8 +22,7 @@ export class CreateOrphanageService {
                             acept_weekend: acept_weekend,
                             hours: {
                                 create: {
-                                    initial_hour: dayjs(orphanage.hours.initial_hour, 'HH:mm:ss').toISOString(),
-                                    final_hour: dayjs(orphanage.hours.final_hour, 'HH:mm:ss').toISOString(),
+                                    ...orphanage.hours
                                 }
                             }
                         },

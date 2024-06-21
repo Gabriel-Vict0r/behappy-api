@@ -1,12 +1,15 @@
 import { NextFunction, Request, Response } from "express";
-import { GetOrphanagesService } from "../services/GetOrphanagesService";
+import { GetOrphanageCompleteService } from "../services/GetOrphanageCompleteService";
 
 
-export class GetOrphanageController {
+
+
+export class GetOrphanageCompleteController {
     async handle(req: Request, res: Response, next: NextFunction) {
-        const service = new GetOrphanagesService();
-        const result = await service.execute();
+        const { id } = req.params
+        const service = new GetOrphanageCompleteService();
 
+        const result = await service.execute(parseInt(id));
         if (result instanceof Error) {
             return res.status(400).json({ message: result.message })
         }

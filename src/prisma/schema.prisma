@@ -49,8 +49,8 @@ model picture {
 
 model hours {
   id           Int       @id() @default(autoincrement())
-  initial_hour DateTime  @db.Time()
-  final_hour   DateTime  @db.Time()
+  initial_hour String
+  final_hour   String
   orphanage    orphanage @relation(fields: [id_orphanage], references: [id])
   id_orphanage Int
 }

@@ -4,14 +4,27 @@ import { validateData } from './middlewares/ValidateData'
 import { CreateImagesController } from './controllers/CreateImagesController'
 import multer from 'multer'
 import multerConfig from './config/multerConfig'
+import { GetOrphanageController } from './controllers/GetOrphanagesController'
+import { GetOrphanageCompleteController } from './controllers/GetOrphanageCompleteController'
 const routes = Router()
 
 const upload = multer(multerConfig);
-routes.post('/create-orphanage',
+
+//rotas post
+routes.post('/v1/create-orphanage',
     upload.array('image'),
     validateData,
     new CreateOrphanageController().handle,
     new CreateImagesController().handle
+)
+
+//rotas get
+routes.get('/v1/get-orphanages',
+    new GetOrphanageController().handle
+)
+
+routes.get('/v1/get-orphanage/:id',
+    new GetOrphanageCompleteController().handle,
 )
 
 export { routes }
