@@ -21,5 +21,13 @@ interface IImage {
     id_orphanage: number;
     url: string;
 }
+
+interface IAdmin {
+    name: string;
+    email: string;
+    password: string | undefined;
+}
+
+type TErrorMessage = Error | string;
 type IResultOrphanage = picture[] & orphanage | null
-export { TOrphanage, IImage, IResultOrphanage }
+export { TOrphanage, IImage, IResultOrphanage, IAdmin, TErrorMessage }

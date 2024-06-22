@@ -1,6 +1,6 @@
 import AWS, { AWSError, S3 } from 'aws-sdk'
 import path from 'path'
-import multerConfig from '../config/multer'
+import multerConfig from '../config/multerConfig'
 import fs from 'fs'
 class S3Storage {
     //constrói o atributo que possui as informações do client
@@ -29,7 +29,7 @@ class S3Storage {
 
         //função que faz o upload do arquivo para as nuvens (AWS bucket)
         this.client.putObject({
-            Bucket: 'housesafebucket',
+            Bucket: 'behappybucket',
             Key: filename,
             ACL: 'public-read',
             Body: fileContent,

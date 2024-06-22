@@ -6,6 +6,8 @@ import multer from 'multer'
 import multerConfig from './config/multerConfig'
 import { GetOrphanageController } from './controllers/GetOrphanagesController'
 import { GetOrphanageCompleteController } from './controllers/GetOrphanageCompleteController'
+import { validateAdmin } from './middlewares/ValidateAdmin'
+import { CreateAdminController } from './controllers/CreateAdminController'
 const routes = Router()
 
 const upload = multer(multerConfig);
@@ -27,4 +29,9 @@ routes.get('/v1/get-orphanage/:id',
     new GetOrphanageCompleteController().handle,
 )
 
+//rotas admin
+routes.post('/v1/create-admin',
+    validateAdmin,
+    new CreateAdminController().handle
+)
 export { routes }
