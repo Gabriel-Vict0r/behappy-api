@@ -1,4 +1,4 @@
-import { orphanage, picture } from "@prisma/client";
+import { orphanage, picture } from "../prisma/generated/client";
 import { Request, Response } from "express";
 import { CreatePictureService } from "../services/CreatePictureService";
 import { IResultOrphanage } from "../types/all";

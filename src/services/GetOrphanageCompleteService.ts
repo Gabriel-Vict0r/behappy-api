@@ -1,4 +1,4 @@
-import { orphanage, PrismaClient } from "@prisma/client";
+import { orphanage, PrismaClient } from "../prisma/generated/client";
 
 
 
