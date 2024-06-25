@@ -28,7 +28,7 @@ const validateData = async (req: Request, res: Response, next: NextFunction) => 
         await linkSchema.validate(orphanage);
         return next();
     } catch (error: any) {
-        return res.status(400).json({ type: error.name, error: error.message })
+        return res.status(400).json({ type: error.name, field: error.path, error: error.message })
     }
 }
 export { validateData }
