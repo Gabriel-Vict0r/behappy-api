@@ -11,6 +11,7 @@ const linkSchema: ObjectSchema<TOrphanage> = object({
     about: string().required().min(10),
     instructions: string().required().min(10),
     acept_weekend: boolean().required(),
+    phone: string().required().min(4),
     location: object({
         latitude: number().required(),
         longitude: number().required(),

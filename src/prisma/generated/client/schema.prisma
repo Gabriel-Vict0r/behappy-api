@@ -34,6 +34,7 @@ model orphanage {
   about         String    @db.Text
   instructions  String    @db.Text
   acept_weekend Boolean   @db.Boolean
+  phone         String    @default(dbgenerated("0"))
   acepted       Boolean   @default(false) @db.Boolean
   location      location  @relation(fields: [id_location], references: [id])
   id_location   Int

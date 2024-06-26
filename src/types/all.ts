@@ -12,6 +12,7 @@ type TOrphanage = {
     name: string;
     about: string;
     instructions: string;
+    phone: string;
     acept_weekend: boolean;
     hours: THour;
     location: TLocation;

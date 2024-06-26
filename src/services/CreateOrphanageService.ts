@@ -8,7 +8,7 @@ dayjs.extend(customParseFormat)
 export class CreateOrphanageService {
     async execute(orphanage: TOrphanage) {
         const prisma = new PrismaClient();
-        const { name, about, acept_weekend, instructions } = orphanage
+        const { name, about, acept_weekend, instructions, phone } = orphanage
         //console.log('HORAS', orphanage.hours.initial_hour)
         try {
             const newOrph = await prisma.location.create({
@@ -20,6 +20,7 @@ export class CreateOrphanageService {
                             about: about,
                             instructions: instructions,
                             acept_weekend: acept_weekend,
+                            phone: phone,
                             hours: {
                                 create: {
                                     ...orphanage.hours

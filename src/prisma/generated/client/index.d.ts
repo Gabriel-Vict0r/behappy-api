@@ -3238,6 +3238,7 @@ export namespace Prisma {
     about: string | null
     instructions: string | null
     acept_weekend: boolean | null
+    phone: string | null
     acepted: boolean | null
     id_location: number | null
   }
@@ -3248,6 +3249,7 @@ export namespace Prisma {
     about: string | null
     instructions: string | null
     acept_weekend: boolean | null
+    phone: string | null
     acepted: boolean | null
     id_location: number | null
   }
@@ -3258,6 +3260,7 @@ export namespace Prisma {
     about: number
     instructions: number
     acept_weekend: number
+    phone: number
     acepted: number
     id_location: number
     _all: number
@@ -3280,6 +3283,7 @@ export namespace Prisma {
     about?: true
     instructions?: true
     acept_weekend?: true
+    phone?: true
     acepted?: true
     id_location?: true
   }
@@ -3290,6 +3294,7 @@ export namespace Prisma {
     about?: true
     instructions?: true
     acept_weekend?: true
+    phone?: true
     acepted?: true
     id_location?: true
   }
@@ -3300,6 +3305,7 @@ export namespace Prisma {
     about?: true
     instructions?: true
     acept_weekend?: true
+    phone?: true
     acepted?: true
     id_location?: true
     _all?: true
@@ -3397,6 +3403,7 @@ export namespace Prisma {
     about: string
     instructions: string
     acept_weekend: boolean
+    phone: string
     acepted: boolean
     id_location: number
     _count: OrphanageCountAggregateOutputType | null
@@ -3426,6 +3433,7 @@ export namespace Prisma {
     about?: boolean
     instructions?: boolean
     acept_weekend?: boolean
+    phone?: boolean
     acepted?: boolean
     id_location?: boolean
     location?: boolean | locationDefaultArgs<ExtArgs>
@@ -3440,6 +3448,7 @@ export namespace Prisma {
     about?: boolean
     instructions?: boolean
     acept_weekend?: boolean
+    phone?: boolean
     acepted?: boolean
     id_location?: boolean
     location?: boolean | locationDefaultArgs<ExtArgs>
@@ -3451,6 +3460,7 @@ export namespace Prisma {
     about?: boolean
     instructions?: boolean
     acept_weekend?: boolean
+    phone?: boolean
     acepted?: boolean
     id_location?: boolean
   }
@@ -3478,6 +3488,7 @@ export namespace Prisma {
       about: string
       instructions: string
       acept_weekend: boolean
+      phone: string
       acepted: boolean
       id_location: number
     }, ExtArgs["result"]["orphanage"]>
@@ -3909,6 +3920,7 @@ export namespace Prisma {
     readonly about: FieldRef<"orphanage", 'String'>
     readonly instructions: FieldRef<"orphanage", 'String'>
     readonly acept_weekend: FieldRef<"orphanage", 'Boolean'>
+    readonly phone: FieldRef<"orphanage", 'String'>
     readonly acepted: FieldRef<"orphanage", 'Boolean'>
     readonly id_location: FieldRef<"orphanage", 'Int'>
   }
@@ -6280,6 +6292,7 @@ export namespace Prisma {
     about: 'about',
     instructions: 'instructions',
     acept_weekend: 'acept_weekend',
+    phone: 'phone',
     acepted: 'acepted',
     id_location: 'id_location'
   };
@@ -6498,6 +6511,7 @@ export namespace Prisma {
     about?: StringFilter<"orphanage"> | string
     instructions?: StringFilter<"orphanage"> | string
     acept_weekend?: BoolFilter<"orphanage"> | boolean
+    phone?: StringFilter<"orphanage"> | string
     acepted?: BoolFilter<"orphanage"> | boolean
     id_location?: IntFilter<"orphanage"> | number
     location?: XOR<LocationRelationFilter, locationWhereInput>
@@ -6511,6 +6525,7 @@ export namespace Prisma {
     about?: SortOrder
     instructions?: SortOrder
     acept_weekend?: SortOrder
+    phone?: SortOrder
     acepted?: SortOrder
     id_location?: SortOrder
     location?: locationOrderByWithRelationInput
@@ -6527,6 +6542,7 @@ export namespace Prisma {
     about?: StringFilter<"orphanage"> | string
     instructions?: StringFilter<"orphanage"> | string
     acept_weekend?: BoolFilter<"orphanage"> | boolean
+    phone?: StringFilter<"orphanage"> | string
     acepted?: BoolFilter<"orphanage"> | boolean
     id_location?: IntFilter<"orphanage"> | number
     location?: XOR<LocationRelationFilter, locationWhereInput>
@@ -6540,6 +6556,7 @@ export namespace Prisma {
     about?: SortOrder
     instructions?: SortOrder
     acept_weekend?: SortOrder
+    phone?: SortOrder
     acepted?: SortOrder
     id_location?: SortOrder
     _count?: orphanageCountOrderByAggregateInput
@@ -6558,6 +6575,7 @@ export namespace Prisma {
     about?: StringWithAggregatesFilter<"orphanage"> | string
     instructions?: StringWithAggregatesFilter<"orphanage"> | string
     acept_weekend?: BoolWithAggregatesFilter<"orphanage"> | boolean
+    phone?: StringWithAggregatesFilter<"orphanage"> | string
     acepted?: BoolWithAggregatesFilter<"orphanage"> | boolean
     id_location?: IntWithAggregatesFilter<"orphanage"> | number
   }
@@ -6755,6 +6773,7 @@ export namespace Prisma {
     about: string
     instructions: string
     acept_weekend: boolean
+    phone?: string
     acepted?: boolean
     location: locationCreateNestedOneWithoutOrphanageInput
     pictures?: pictureCreateNestedManyWithoutOrphanageInput
@@ -6767,6 +6786,7 @@ export namespace Prisma {
     about: string
     instructions: string
     acept_weekend: boolean
+    phone?: string
     acepted?: boolean
     id_location: number
     pictures?: pictureUncheckedCreateNestedManyWithoutOrphanageInput
@@ -6778,6 +6798,7 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     instructions?: StringFieldUpdateOperationsInput | string
     acept_weekend?: BoolFieldUpdateOperationsInput | boolean
+    phone?: StringFieldUpdateOperationsInput | string
     acepted?: BoolFieldUpdateOperationsInput | boolean
     location?: locationUpdateOneRequiredWithoutOrphanageNestedInput
     pictures?: pictureUpdateManyWithoutOrphanageNestedInput
@@ -6790,6 +6811,7 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     instructions?: StringFieldUpdateOperationsInput | string
     acept_weekend?: BoolFieldUpdateOperationsInput | boolean
+    phone?: StringFieldUpdateOperationsInput | string
     acepted?: BoolFieldUpdateOperationsInput | boolean
     id_location?: IntFieldUpdateOperationsInput | number
     pictures?: pictureUncheckedUpdateManyWithoutOrphanageNestedInput
@@ -6802,6 +6824,7 @@ export namespace Prisma {
     about: string
     instructions: string
     acept_weekend: boolean
+    phone?: string
     acepted?: boolean
     id_location: number
   }
@@ -6811,6 +6834,7 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     instructions?: StringFieldUpdateOperationsInput | string
     acept_weekend?: BoolFieldUpdateOperationsInput | boolean
+    phone?: StringFieldUpdateOperationsInput | string
     acepted?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -6820,6 +6844,7 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     instructions?: StringFieldUpdateOperationsInput | string
     acept_weekend?: BoolFieldUpdateOperationsInput | boolean
+    phone?: StringFieldUpdateOperationsInput | string
     acepted?: BoolFieldUpdateOperationsInput | boolean
     id_location?: IntFieldUpdateOperationsInput | number
   }
@@ -7099,6 +7124,7 @@ export namespace Prisma {
     about?: SortOrder
     instructions?: SortOrder
     acept_weekend?: SortOrder
+    phone?: SortOrder
     acepted?: SortOrder
     id_location?: SortOrder
   }
@@ -7114,6 +7140,7 @@ export namespace Prisma {
     about?: SortOrder
     instructions?: SortOrder
     acept_weekend?: SortOrder
+    phone?: SortOrder
     acepted?: SortOrder
     id_location?: SortOrder
   }
@@ -7124,6 +7151,7 @@ export namespace Prisma {
     about?: SortOrder
     instructions?: SortOrder
     acept_weekend?: SortOrder
+    phone?: SortOrder
     acepted?: SortOrder
     id_location?: SortOrder
   }
@@ -7511,6 +7539,7 @@ export namespace Prisma {
     about: string
     instructions: string
     acept_weekend: boolean
+    phone?: string
     acepted?: boolean
     pictures?: pictureCreateNestedManyWithoutOrphanageInput
     hours?: hoursCreateNestedManyWithoutOrphanageInput
@@ -7522,6 +7551,7 @@ export namespace Prisma {
     about: string
     instructions: string
     acept_weekend: boolean
+    phone?: string
     acepted?: boolean
     pictures?: pictureUncheckedCreateNestedManyWithoutOrphanageInput
     hours?: hoursUncheckedCreateNestedManyWithoutOrphanageInput
@@ -7562,6 +7592,7 @@ export namespace Prisma {
     about?: StringFilter<"orphanage"> | string
     instructions?: StringFilter<"orphanage"> | string
     acept_weekend?: BoolFilter<"orphanage"> | boolean
+    phone?: StringFilter<"orphanage"> | string
     acepted?: BoolFilter<"orphanage"> | boolean
     id_location?: IntFilter<"orphanage"> | number
   }
@@ -7700,6 +7731,7 @@ export namespace Prisma {
     about: string
     instructions: string
     acept_weekend: boolean
+    phone?: string
     acepted?: boolean
     location: locationCreateNestedOneWithoutOrphanageInput
     hours?: hoursCreateNestedManyWithoutOrphanageInput
@@ -7711,6 +7743,7 @@ export namespace Prisma {
     about: string
     instructions: string
     acept_weekend: boolean
+    phone?: string
     acepted?: boolean
     id_location: number
     hours?: hoursUncheckedCreateNestedManyWithoutOrphanageInput
@@ -7737,6 +7770,7 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     instructions?: StringFieldUpdateOperationsInput | string
     acept_weekend?: BoolFieldUpdateOperationsInput | boolean
+    phone?: StringFieldUpdateOperationsInput | string
     acepted?: BoolFieldUpdateOperationsInput | boolean
     location?: locationUpdateOneRequiredWithoutOrphanageNestedInput
     hours?: hoursUpdateManyWithoutOrphanageNestedInput
@@ -7748,6 +7782,7 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     instructions?: StringFieldUpdateOperationsInput | string
     acept_weekend?: BoolFieldUpdateOperationsInput | boolean
+    phone?: StringFieldUpdateOperationsInput | string
     acepted?: BoolFieldUpdateOperationsInput | boolean
     id_location?: IntFieldUpdateOperationsInput | number
     hours?: hoursUncheckedUpdateManyWithoutOrphanageNestedInput
@@ -7758,6 +7793,7 @@ export namespace Prisma {
     about: string
     instructions: string
     acept_weekend: boolean
+    phone?: string
     acepted?: boolean
     location: locationCreateNestedOneWithoutOrphanageInput
     pictures?: pictureCreateNestedManyWithoutOrphanageInput
@@ -7769,6 +7805,7 @@ export namespace Prisma {
     about: string
     instructions: string
     acept_weekend: boolean
+    phone?: string
     acepted?: boolean
     id_location: number
     pictures?: pictureUncheckedCreateNestedManyWithoutOrphanageInput
@@ -7795,6 +7832,7 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     instructions?: StringFieldUpdateOperationsInput | string
     acept_weekend?: BoolFieldUpdateOperationsInput | boolean
+    phone?: StringFieldUpdateOperationsInput | string
     acepted?: BoolFieldUpdateOperationsInput | boolean
     location?: locationUpdateOneRequiredWithoutOrphanageNestedInput
     pictures?: pictureUpdateManyWithoutOrphanageNestedInput
@@ -7806,6 +7844,7 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     instructions?: StringFieldUpdateOperationsInput | string
     acept_weekend?: BoolFieldUpdateOperationsInput | boolean
+    phone?: StringFieldUpdateOperationsInput | string
     acepted?: BoolFieldUpdateOperationsInput | boolean
     id_location?: IntFieldUpdateOperationsInput | number
     pictures?: pictureUncheckedUpdateManyWithoutOrphanageNestedInput
@@ -7817,6 +7856,7 @@ export namespace Prisma {
     about: string
     instructions: string
     acept_weekend: boolean
+    phone?: string
     acepted?: boolean
   }
 
@@ -7825,6 +7865,7 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     instructions?: StringFieldUpdateOperationsInput | string
     acept_weekend?: BoolFieldUpdateOperationsInput | boolean
+    phone?: StringFieldUpdateOperationsInput | string
     acepted?: BoolFieldUpdateOperationsInput | boolean
     pictures?: pictureUpdateManyWithoutOrphanageNestedInput
     hours?: hoursUpdateManyWithoutOrphanageNestedInput
@@ -7836,6 +7877,7 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     instructions?: StringFieldUpdateOperationsInput | string
     acept_weekend?: BoolFieldUpdateOperationsInput | boolean
+    phone?: StringFieldUpdateOperationsInput | string
     acepted?: BoolFieldUpdateOperationsInput | boolean
     pictures?: pictureUncheckedUpdateManyWithoutOrphanageNestedInput
     hours?: hoursUncheckedUpdateManyWithoutOrphanageNestedInput
@@ -7847,6 +7889,7 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     instructions?: StringFieldUpdateOperationsInput | string
     acept_weekend?: BoolFieldUpdateOperationsInput | boolean
+    phone?: StringFieldUpdateOperationsInput | string
     acepted?: BoolFieldUpdateOperationsInput | boolean
   }
 

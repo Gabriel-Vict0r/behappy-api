@@ -138,6 +138,7 @@ exports.Prisma.OrphanageScalarFieldEnum = {
   about: 'about',
   instructions: 'instructions',
   acept_weekend: 'acept_weekend',
+  phone: 'phone',
   acepted: 'acepted',
   id_location: 'id_location'
 };
