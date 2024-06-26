@@ -4,12 +4,6 @@ import { UploadImageService } from "../services/CreateImageService";
 
 
 
-export class UploadImagesMiddleware {
-    async handle(req: Request, res: Response, next: NextFunction) {
-
-    }
-}
-
 const uploadImagesMiddleware = async (req: Request, res: Response, next: NextFunction) => {
     const files = req.files;
 
@@ -30,3 +24,4 @@ const uploadImagesMiddleware = async (req: Request, res: Response, next: NextFun
         return res.status(400).json({ message: error.message })
     }
 }
+export { uploadImagesMiddleware }

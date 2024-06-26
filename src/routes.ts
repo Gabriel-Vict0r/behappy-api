@@ -8,6 +8,7 @@ import { GetOrphanageController } from './controllers/GetOrphanagesController'
 import { GetOrphanageCompleteController } from './controllers/GetOrphanageCompleteController'
 import { validateAdmin } from './middlewares/ValidateAdmin'
 import { CreateAdminController } from './controllers/CreateAdminController'
+import { uploadImagesMiddleware } from './middlewares/UploadImagesMiddleware'
 const routes = Router()
 
 const upload = multer(multerConfig);
@@ -17,6 +18,7 @@ routes.post('/v1/create-orphanage',
     upload.array('image'),
     validateData,
     new CreateOrphanageController().handle,
+    uploadImagesMiddleware,
     new CreateImagesController().handle
 )
 
