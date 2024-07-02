@@ -9,6 +9,8 @@ import { GetOrphanageCompleteController } from './controllers/GetOrphanageComple
 import { validateAdmin } from './middlewares/ValidateAdmin'
 import { CreateAdminController } from './controllers/CreateAdminController'
 import { uploadImagesMiddleware } from './middlewares/UploadImagesMiddleware'
+import validateLogin from './middlewares/ValidateLogin'
+import { AuthAdminController } from './controllers/AuthAdminController'
 const routes = Router()
 
 const upload = multer(multerConfig);
@@ -35,5 +37,9 @@ routes.get('/v1/get-orphanage/:id',
 routes.post('/v1/create-admin',
     validateAdmin,
     new CreateAdminController().handle
+)
+routes.post('/v1/login-admin',
+    validateLogin,
+    new AuthAdminController().handle
 )
 export { routes }

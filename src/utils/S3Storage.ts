@@ -24,7 +24,6 @@ class S3Storage {
         if (!contentType) {
             throw new Error("arquivo não encontrado");
         }
-
         //lê o arquivo que está no diretório especificado no multer
         const fileContent = await fs.promises.readFile(originalPath);
 
