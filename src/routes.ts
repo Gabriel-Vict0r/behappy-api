@@ -11,6 +11,7 @@ import { CreateAdminController } from './controllers/CreateAdminController'
 import { uploadImagesMiddleware } from './middlewares/UploadImagesMiddleware'
 import validateLogin from './middlewares/ValidateLogin'
 import { AuthAdminController } from './controllers/AuthAdminController'
+import { UpdateOrphanageController } from './controllers/UpdateOrphanageController'
 const routes = Router()
 
 const upload = multer(multerConfig);
@@ -41,5 +42,11 @@ routes.post('/v1/create-admin',
 routes.post('/v1/login-admin',
     validateLogin,
     new AuthAdminController().handle
+)
+
+//route update
+routes.put('v1/update-orphanage',
+    validateData,
+    new UpdateOrphanageController().handle
 )
 export { routes }
