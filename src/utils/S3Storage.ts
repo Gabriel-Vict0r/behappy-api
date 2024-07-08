@@ -2,6 +2,7 @@ import AWS, { AWSError, S3 } from 'aws-sdk'
 import path from 'path'
 import multerConfig from '../config/multerConfig'
 import fs from 'fs'
+//import mime from 'mime'
 class S3Storage {
     //constrói o atributo que possui as informações do client
     private client: S3;
