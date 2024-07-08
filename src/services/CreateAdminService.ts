@@ -2,7 +2,7 @@ import { string } from "yup"
 import { IAdmin } from "../types/all";
 import { admin, PrismaClient } from "../prisma/generated/client";
 import getError from "../utils/getError";
-
+import bcrypt from 'bcrypt'
 
 
 
@@ -19,11 +19,17 @@ export class CreateAdminService {
             throw new Error("email já está sendo usado.");
         }
 
+        const hashPassword = await bcrypt.hash(admin.password, 10);
         try {
             const newAdmin = await prisma.admin.create({
-                data: admin
+                data: {
+                    email: admin.email,
+                    password: hashPassword,
+                    name: admin.name
+                }
             })
-            return newAdmin;
+            const { password, ...adminCredentials } = newAdmin;
+            return adminCredentials;
         } catch (error: any) {
             getError(error);
         }
