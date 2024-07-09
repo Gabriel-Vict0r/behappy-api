@@ -19,7 +19,7 @@ const linkSchema: ObjectSchema<TOrphanage> = object({
     hours: object({
         initial_hour: string().required(),
         final_hour: string().required()
-    })
+    }),
 })
 const validateData = async (req: Request, res: Response, next: NextFunction) => {
     let { orph } = req.body

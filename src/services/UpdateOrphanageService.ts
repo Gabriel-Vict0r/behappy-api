@@ -1,41 +1,68 @@
 import { orphanage, PrismaClient } from "../prisma/generated/client";
+import getError from "../utils/getError";
 
 
 
 
 
 export class UpdateOrphanageService {
-    async execute(orphanage: any) {
+    async execute(id: number, orphanage: any) {
         const prisma = new PrismaClient();
 
         try {
-            const updatedOrph = await prisma.orphanage.update({
+            const { id_location } = await prisma.orphanage.findUnique({
                 where: {
-                    id: orphanage.id
+                    id: id
                 },
-                data: {
-                    ...orphanage,
-                    location: {
-                        update: {
-                            latitude: orphanage.location.latitude,
-                            longitude: orphanage.location.longitude
-                        }
-                    },
-                    hours: {
-                        update: {
-                            initial_hour: orphanage.hours.initial_hour,
-                            final_hour: orphanage.hours.final_hour
-                        }
-                    }
+                select: {
+                    id_location: true
+                }
+            });
+            const getIdHour = await prisma.hours.findFirst({
+                where: {
+                    id_orphanage: id,
                 },
-                include: {
-                    location: true,
-                    hours: true
+                select: {
+                    id: true
                 }
             })
-            return updatedOrph;
+            //console.log('getters', id_location, getIdHour);
+            const updatedOrphanage = await prisma.$transaction([
+                prisma.orphanage.update({
+                    where: {
+                        id: id
+                    },
+                    data: {
+                        name: orphanage.name,
+                        about: orphanage.about,
+                        instructions: orphanage.instructions,
+                        acept_weekend: orphanage.acept_weekend,
+                        phone: orphanage.phone
+                    }
+                }),
+                prisma.location.update({
+                    where: {
+                        id: id_location
+                    },
+                    data: {
+                        ...orphanage.location
+                    }
+                }),
+                prisma.hours.update({
+                    where: {
+                        id: id
+                    },
+                    data: {
+                        ...orphanage.hours
+                    }
+                })
+            ])
+            //console.log(updatedOrphanage);
+            return updatedOrphanage;
         } catch (error) {
-            throw new Error(error.message);
+            getError(error);
+        } finally {
+            await prisma.$disconnect();
         }
     }
 }

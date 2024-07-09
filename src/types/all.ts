@@ -1,12 +1,12 @@
 import { orphanage, picture } from "@prisma/client";
 
 type TLocation = {
-    latitude: number;
-    longitude: number;
+    latitude?: number;
+    longitude?: number;
 }
 type THour = {
-    initial_hour: string;
-    final_hour: string;
+    initial_hour?: string;
+    final_hour?: string;
 }
 type TOrphanage = {
     name: string;

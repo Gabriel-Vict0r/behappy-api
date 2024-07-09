@@ -12,6 +12,7 @@ import { uploadImagesMiddleware } from './middlewares/UploadImagesMiddleware'
 import validateLogin from './middlewares/ValidateLogin'
 import { AuthAdminController } from './controllers/AuthAdminController'
 import { UpdateOrphanageController } from './controllers/UpdateOrphanageController'
+import { AceptOrphanageController } from './controllers/AceptOrphanageController'
 const routes = Router()
 
 const upload = multer(multerConfig);
@@ -45,8 +46,12 @@ routes.post('/v1/login-admin',
 )
 
 //route update
-routes.put('v1/update-orphanage',
+routes.put('/v1/update-orphanage/:id',
     validateData,
     new UpdateOrphanageController().handle
+)
+
+routes.patch('/v1/acept-orphanage/:id',
+    new AceptOrphanageController().handle,
 )
 export { routes }
