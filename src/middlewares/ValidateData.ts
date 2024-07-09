@@ -27,6 +27,7 @@ const validateData = async (req: Request, res: Response, next: NextFunction) => 
     const orphanage = orph ? JSON.parse(orph) : orphanageUpdate;
     console.log(orphanage)
     try {
+        console.log(orphanage)
         await linkSchema.validate(orphanage);
         return next();
     } catch (error: any) {
