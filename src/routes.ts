@@ -13,6 +13,7 @@ import validateLogin from './middlewares/ValidateLogin'
 import { AuthAdminController } from './controllers/AuthAdminController'
 import { UpdateOrphanageController } from './controllers/UpdateOrphanageController'
 import { AceptOrphanageController } from './controllers/AceptOrphanageController'
+import { DisableOrphanageController } from './controllers/DisableOrphanageController'
 const routes = Router()
 
 const upload = multer(multerConfig);
@@ -53,5 +54,9 @@ routes.put('/v1/update-orphanage/:id',
 
 routes.patch('/v1/acept-orphanage/:id',
     new AceptOrphanageController().handle,
+)
+//route delete
+routes.patch('/v1/disable-orphanage/:id',
+    new DisableOrphanageController().handle
 )
 export { routes }

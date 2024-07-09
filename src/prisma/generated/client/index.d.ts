@@ -1253,13 +1253,13 @@ export namespace Prisma {
    */
 
   export type OrphanageCountOutputType = {
-    pictures: number
     hours: number
+    pictures: number
   }
 
   export type OrphanageCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    pictures?: boolean | OrphanageCountOutputTypeCountPicturesArgs
     hours?: boolean | OrphanageCountOutputTypeCountHoursArgs
+    pictures?: boolean | OrphanageCountOutputTypeCountPicturesArgs
   }
 
   // Custom InputTypes
@@ -1276,15 +1276,15 @@ export namespace Prisma {
   /**
    * OrphanageCountOutputType without action
    */
-  export type OrphanageCountOutputTypeCountPicturesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: pictureWhereInput
+  export type OrphanageCountOutputTypeCountHoursArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: hoursWhereInput
   }
 
   /**
    * OrphanageCountOutputType without action
    */
-  export type OrphanageCountOutputTypeCountHoursArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: hoursWhereInput
+  export type OrphanageCountOutputTypeCountPicturesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: pictureWhereInput
   }
 
 
@@ -3238,9 +3238,10 @@ export namespace Prisma {
     about: string | null
     instructions: string | null
     acept_weekend: boolean | null
-    phone: string | null
     acepted: boolean | null
     id_location: number | null
+    phone: string | null
+    deletedAt: Date | null
   }
 
   export type OrphanageMaxAggregateOutputType = {
@@ -3249,9 +3250,10 @@ export namespace Prisma {
     about: string | null
     instructions: string | null
     acept_weekend: boolean | null
-    phone: string | null
     acepted: boolean | null
     id_location: number | null
+    phone: string | null
+    deletedAt: Date | null
   }
 
   export type OrphanageCountAggregateOutputType = {
@@ -3260,9 +3262,10 @@ export namespace Prisma {
     about: number
     instructions: number
     acept_weekend: number
-    phone: number
     acepted: number
     id_location: number
+    phone: number
+    deletedAt: number
     _all: number
   }
 
@@ -3283,9 +3286,10 @@ export namespace Prisma {
     about?: true
     instructions?: true
     acept_weekend?: true
-    phone?: true
     acepted?: true
     id_location?: true
+    phone?: true
+    deletedAt?: true
   }
 
   export type OrphanageMaxAggregateInputType = {
@@ -3294,9 +3298,10 @@ export namespace Prisma {
     about?: true
     instructions?: true
     acept_weekend?: true
-    phone?: true
     acepted?: true
     id_location?: true
+    phone?: true
+    deletedAt?: true
   }
 
   export type OrphanageCountAggregateInputType = {
@@ -3305,9 +3310,10 @@ export namespace Prisma {
     about?: true
     instructions?: true
     acept_weekend?: true
-    phone?: true
     acepted?: true
     id_location?: true
+    phone?: true
+    deletedAt?: true
     _all?: true
   }
 
@@ -3403,9 +3409,10 @@ export namespace Prisma {
     about: string
     instructions: string
     acept_weekend: boolean
-    phone: string
     acepted: boolean
     id_location: number
+    phone: string
+    deletedAt: Date | null
     _count: OrphanageCountAggregateOutputType | null
     _avg: OrphanageAvgAggregateOutputType | null
     _sum: OrphanageSumAggregateOutputType | null
@@ -3433,12 +3440,13 @@ export namespace Prisma {
     about?: boolean
     instructions?: boolean
     acept_weekend?: boolean
-    phone?: boolean
     acepted?: boolean
     id_location?: boolean
+    phone?: boolean
+    deletedAt?: boolean
+    hours?: boolean | orphanage$hoursArgs<ExtArgs>
     location?: boolean | locationDefaultArgs<ExtArgs>
     pictures?: boolean | orphanage$picturesArgs<ExtArgs>
-    hours?: boolean | orphanage$hoursArgs<ExtArgs>
     _count?: boolean | OrphanageCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["orphanage"]>
 
@@ -3448,9 +3456,10 @@ export namespace Prisma {
     about?: boolean
     instructions?: boolean
     acept_weekend?: boolean
-    phone?: boolean
     acepted?: boolean
     id_location?: boolean
+    phone?: boolean
+    deletedAt?: boolean
     location?: boolean | locationDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["orphanage"]>
 
@@ -3460,15 +3469,16 @@ export namespace Prisma {
     about?: boolean
     instructions?: boolean
     acept_weekend?: boolean
-    phone?: boolean
     acepted?: boolean
     id_location?: boolean
+    phone?: boolean
+    deletedAt?: boolean
   }
 
   export type orphanageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    hours?: boolean | orphanage$hoursArgs<ExtArgs>
     location?: boolean | locationDefaultArgs<ExtArgs>
     pictures?: boolean | orphanage$picturesArgs<ExtArgs>
-    hours?: boolean | orphanage$hoursArgs<ExtArgs>
     _count?: boolean | OrphanageCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type orphanageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3478,9 +3488,9 @@ export namespace Prisma {
   export type $orphanagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "orphanage"
     objects: {
+      hours: Prisma.$hoursPayload<ExtArgs>[]
       location: Prisma.$locationPayload<ExtArgs>
       pictures: Prisma.$picturePayload<ExtArgs>[]
-      hours: Prisma.$hoursPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -3488,9 +3498,10 @@ export namespace Prisma {
       about: string
       instructions: string
       acept_weekend: boolean
-      phone: string
       acepted: boolean
       id_location: number
+      phone: string
+      deletedAt: Date | null
     }, ExtArgs["result"]["orphanage"]>
     composites: {}
   }
@@ -3881,11 +3892,11 @@ export namespace Prisma {
   export interface Prisma__orphanageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
+    hours<T extends orphanage$hoursArgs<ExtArgs> = {}>(args?: Subset<T, orphanage$hoursArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$hoursPayload<ExtArgs>, T, 'findMany'> | Null>;
+
     location<T extends locationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, locationDefaultArgs<ExtArgs>>): Prisma__locationClient<$Result.GetResult<Prisma.$locationPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     pictures<T extends orphanage$picturesArgs<ExtArgs> = {}>(args?: Subset<T, orphanage$picturesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$picturePayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    hours<T extends orphanage$hoursArgs<ExtArgs> = {}>(args?: Subset<T, orphanage$hoursArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$hoursPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -3920,9 +3931,10 @@ export namespace Prisma {
     readonly about: FieldRef<"orphanage", 'String'>
     readonly instructions: FieldRef<"orphanage", 'String'>
     readonly acept_weekend: FieldRef<"orphanage", 'Boolean'>
-    readonly phone: FieldRef<"orphanage", 'String'>
     readonly acepted: FieldRef<"orphanage", 'Boolean'>
     readonly id_location: FieldRef<"orphanage", 'Int'>
+    readonly phone: FieldRef<"orphanage", 'String'>
+    readonly deletedAt: FieldRef<"orphanage", 'DateTime'>
   }
     
 
@@ -4241,26 +4253,6 @@ export namespace Prisma {
   }
 
   /**
-   * orphanage.pictures
-   */
-  export type orphanage$picturesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the picture
-     */
-    select?: pictureSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: pictureInclude<ExtArgs> | null
-    where?: pictureWhereInput
-    orderBy?: pictureOrderByWithRelationInput | pictureOrderByWithRelationInput[]
-    cursor?: pictureWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: PictureScalarFieldEnum | PictureScalarFieldEnum[]
-  }
-
-  /**
    * orphanage.hours
    */
   export type orphanage$hoursArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4278,6 +4270,26 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: HoursScalarFieldEnum | HoursScalarFieldEnum[]
+  }
+
+  /**
+   * orphanage.pictures
+   */
+  export type orphanage$picturesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the picture
+     */
+    select?: pictureSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pictureInclude<ExtArgs> | null
+    where?: pictureWhereInput
+    orderBy?: pictureOrderByWithRelationInput | pictureOrderByWithRelationInput[]
+    cursor?: pictureWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PictureScalarFieldEnum | PictureScalarFieldEnum[]
   }
 
   /**
@@ -5292,23 +5304,23 @@ export namespace Prisma {
 
   export type HoursMinAggregateOutputType = {
     id: number | null
-    initial_hour: string | null
-    final_hour: string | null
     id_orphanage: number | null
+    final_hour: string | null
+    initial_hour: string | null
   }
 
   export type HoursMaxAggregateOutputType = {
     id: number | null
-    initial_hour: string | null
-    final_hour: string | null
     id_orphanage: number | null
+    final_hour: string | null
+    initial_hour: string | null
   }
 
   export type HoursCountAggregateOutputType = {
     id: number
-    initial_hour: number
-    final_hour: number
     id_orphanage: number
+    final_hour: number
+    initial_hour: number
     _all: number
   }
 
@@ -5325,23 +5337,23 @@ export namespace Prisma {
 
   export type HoursMinAggregateInputType = {
     id?: true
-    initial_hour?: true
-    final_hour?: true
     id_orphanage?: true
+    final_hour?: true
+    initial_hour?: true
   }
 
   export type HoursMaxAggregateInputType = {
     id?: true
-    initial_hour?: true
-    final_hour?: true
     id_orphanage?: true
+    final_hour?: true
+    initial_hour?: true
   }
 
   export type HoursCountAggregateInputType = {
     id?: true
-    initial_hour?: true
-    final_hour?: true
     id_orphanage?: true
+    final_hour?: true
+    initial_hour?: true
     _all?: true
   }
 
@@ -5433,9 +5445,9 @@ export namespace Prisma {
 
   export type HoursGroupByOutputType = {
     id: number
-    initial_hour: string
-    final_hour: string
     id_orphanage: number
+    final_hour: string
+    initial_hour: string
     _count: HoursCountAggregateOutputType | null
     _avg: HoursAvgAggregateOutputType | null
     _sum: HoursSumAggregateOutputType | null
@@ -5459,25 +5471,25 @@ export namespace Prisma {
 
   export type hoursSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    initial_hour?: boolean
-    final_hour?: boolean
     id_orphanage?: boolean
+    final_hour?: boolean
+    initial_hour?: boolean
     orphanage?: boolean | orphanageDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["hours"]>
 
   export type hoursSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    initial_hour?: boolean
-    final_hour?: boolean
     id_orphanage?: boolean
+    final_hour?: boolean
+    initial_hour?: boolean
     orphanage?: boolean | orphanageDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["hours"]>
 
   export type hoursSelectScalar = {
     id?: boolean
-    initial_hour?: boolean
-    final_hour?: boolean
     id_orphanage?: boolean
+    final_hour?: boolean
+    initial_hour?: boolean
   }
 
   export type hoursInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5494,9 +5506,9 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      initial_hour: string
-      final_hour: string
       id_orphanage: number
+      final_hour: string
+      initial_hour: string
     }, ExtArgs["result"]["hours"]>
     composites: {}
   }
@@ -5918,9 +5930,9 @@ export namespace Prisma {
    */ 
   interface hoursFieldRefs {
     readonly id: FieldRef<"hours", 'Int'>
-    readonly initial_hour: FieldRef<"hours", 'String'>
-    readonly final_hour: FieldRef<"hours", 'String'>
     readonly id_orphanage: FieldRef<"hours", 'Int'>
+    readonly final_hour: FieldRef<"hours", 'String'>
+    readonly initial_hour: FieldRef<"hours", 'String'>
   }
     
 
@@ -6292,9 +6304,10 @@ export namespace Prisma {
     about: 'about',
     instructions: 'instructions',
     acept_weekend: 'acept_weekend',
-    phone: 'phone',
     acepted: 'acepted',
-    id_location: 'id_location'
+    id_location: 'id_location',
+    phone: 'phone',
+    deletedAt: 'deletedAt'
   };
 
   export type OrphanageScalarFieldEnum = (typeof OrphanageScalarFieldEnum)[keyof typeof OrphanageScalarFieldEnum]
@@ -6311,9 +6324,9 @@ export namespace Prisma {
 
   export const HoursScalarFieldEnum: {
     id: 'id',
-    initial_hour: 'initial_hour',
+    id_orphanage: 'id_orphanage',
     final_hour: 'final_hour',
-    id_orphanage: 'id_orphanage'
+    initial_hour: 'initial_hour'
   };
 
   export type HoursScalarFieldEnum = (typeof HoursScalarFieldEnum)[keyof typeof HoursScalarFieldEnum]
@@ -6333,6 +6346,14 @@ export namespace Prisma {
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -6386,6 +6407,20 @@ export namespace Prisma {
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
     
 
 
@@ -6511,12 +6546,13 @@ export namespace Prisma {
     about?: StringFilter<"orphanage"> | string
     instructions?: StringFilter<"orphanage"> | string
     acept_weekend?: BoolFilter<"orphanage"> | boolean
-    phone?: StringFilter<"orphanage"> | string
     acepted?: BoolFilter<"orphanage"> | boolean
     id_location?: IntFilter<"orphanage"> | number
+    phone?: StringFilter<"orphanage"> | string
+    deletedAt?: DateTimeNullableFilter<"orphanage"> | Date | string | null
+    hours?: HoursListRelationFilter
     location?: XOR<LocationRelationFilter, locationWhereInput>
     pictures?: PictureListRelationFilter
-    hours?: HoursListRelationFilter
   }
 
   export type orphanageOrderByWithRelationInput = {
@@ -6525,12 +6561,13 @@ export namespace Prisma {
     about?: SortOrder
     instructions?: SortOrder
     acept_weekend?: SortOrder
-    phone?: SortOrder
     acepted?: SortOrder
     id_location?: SortOrder
+    phone?: SortOrder
+    deletedAt?: SortOrderInput | SortOrder
+    hours?: hoursOrderByRelationAggregateInput
     location?: locationOrderByWithRelationInput
     pictures?: pictureOrderByRelationAggregateInput
-    hours?: hoursOrderByRelationAggregateInput
   }
 
   export type orphanageWhereUniqueInput = Prisma.AtLeast<{
@@ -6542,12 +6579,13 @@ export namespace Prisma {
     about?: StringFilter<"orphanage"> | string
     instructions?: StringFilter<"orphanage"> | string
     acept_weekend?: BoolFilter<"orphanage"> | boolean
-    phone?: StringFilter<"orphanage"> | string
     acepted?: BoolFilter<"orphanage"> | boolean
     id_location?: IntFilter<"orphanage"> | number
+    phone?: StringFilter<"orphanage"> | string
+    deletedAt?: DateTimeNullableFilter<"orphanage"> | Date | string | null
+    hours?: HoursListRelationFilter
     location?: XOR<LocationRelationFilter, locationWhereInput>
     pictures?: PictureListRelationFilter
-    hours?: HoursListRelationFilter
   }, "id">
 
   export type orphanageOrderByWithAggregationInput = {
@@ -6556,9 +6594,10 @@ export namespace Prisma {
     about?: SortOrder
     instructions?: SortOrder
     acept_weekend?: SortOrder
-    phone?: SortOrder
     acepted?: SortOrder
     id_location?: SortOrder
+    phone?: SortOrder
+    deletedAt?: SortOrderInput | SortOrder
     _count?: orphanageCountOrderByAggregateInput
     _avg?: orphanageAvgOrderByAggregateInput
     _max?: orphanageMaxOrderByAggregateInput
@@ -6575,9 +6614,10 @@ export namespace Prisma {
     about?: StringWithAggregatesFilter<"orphanage"> | string
     instructions?: StringWithAggregatesFilter<"orphanage"> | string
     acept_weekend?: BoolWithAggregatesFilter<"orphanage"> | boolean
-    phone?: StringWithAggregatesFilter<"orphanage"> | string
     acepted?: BoolWithAggregatesFilter<"orphanage"> | boolean
     id_location?: IntWithAggregatesFilter<"orphanage"> | number
+    phone?: StringWithAggregatesFilter<"orphanage"> | string
+    deletedAt?: DateTimeNullableWithAggregatesFilter<"orphanage"> | Date | string | null
   }
 
   export type pictureWhereInput = {
@@ -6632,17 +6672,17 @@ export namespace Prisma {
     OR?: hoursWhereInput[]
     NOT?: hoursWhereInput | hoursWhereInput[]
     id?: IntFilter<"hours"> | number
-    initial_hour?: StringFilter<"hours"> | string
-    final_hour?: StringFilter<"hours"> | string
     id_orphanage?: IntFilter<"hours"> | number
+    final_hour?: StringFilter<"hours"> | string
+    initial_hour?: StringFilter<"hours"> | string
     orphanage?: XOR<OrphanageRelationFilter, orphanageWhereInput>
   }
 
   export type hoursOrderByWithRelationInput = {
     id?: SortOrder
-    initial_hour?: SortOrder
-    final_hour?: SortOrder
     id_orphanage?: SortOrder
+    final_hour?: SortOrder
+    initial_hour?: SortOrder
     orphanage?: orphanageOrderByWithRelationInput
   }
 
@@ -6651,17 +6691,17 @@ export namespace Prisma {
     AND?: hoursWhereInput | hoursWhereInput[]
     OR?: hoursWhereInput[]
     NOT?: hoursWhereInput | hoursWhereInput[]
-    initial_hour?: StringFilter<"hours"> | string
-    final_hour?: StringFilter<"hours"> | string
     id_orphanage?: IntFilter<"hours"> | number
+    final_hour?: StringFilter<"hours"> | string
+    initial_hour?: StringFilter<"hours"> | string
     orphanage?: XOR<OrphanageRelationFilter, orphanageWhereInput>
   }, "id">
 
   export type hoursOrderByWithAggregationInput = {
     id?: SortOrder
-    initial_hour?: SortOrder
-    final_hour?: SortOrder
     id_orphanage?: SortOrder
+    final_hour?: SortOrder
+    initial_hour?: SortOrder
     _count?: hoursCountOrderByAggregateInput
     _avg?: hoursAvgOrderByAggregateInput
     _max?: hoursMaxOrderByAggregateInput
@@ -6674,9 +6714,9 @@ export namespace Prisma {
     OR?: hoursScalarWhereWithAggregatesInput[]
     NOT?: hoursScalarWhereWithAggregatesInput | hoursScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"hours"> | number
-    initial_hour?: StringWithAggregatesFilter<"hours"> | string
-    final_hour?: StringWithAggregatesFilter<"hours"> | string
     id_orphanage?: IntWithAggregatesFilter<"hours"> | number
+    final_hour?: StringWithAggregatesFilter<"hours"> | string
+    initial_hour?: StringWithAggregatesFilter<"hours"> | string
   }
 
   export type adminCreateInput = {
@@ -6773,11 +6813,12 @@ export namespace Prisma {
     about: string
     instructions: string
     acept_weekend: boolean
-    phone?: string
     acepted?: boolean
+    phone?: string
+    deletedAt?: Date | string | null
+    hours?: hoursCreateNestedManyWithoutOrphanageInput
     location: locationCreateNestedOneWithoutOrphanageInput
     pictures?: pictureCreateNestedManyWithoutOrphanageInput
-    hours?: hoursCreateNestedManyWithoutOrphanageInput
   }
 
   export type orphanageUncheckedCreateInput = {
@@ -6786,11 +6827,12 @@ export namespace Prisma {
     about: string
     instructions: string
     acept_weekend: boolean
-    phone?: string
     acepted?: boolean
     id_location: number
-    pictures?: pictureUncheckedCreateNestedManyWithoutOrphanageInput
+    phone?: string
+    deletedAt?: Date | string | null
     hours?: hoursUncheckedCreateNestedManyWithoutOrphanageInput
+    pictures?: pictureUncheckedCreateNestedManyWithoutOrphanageInput
   }
 
   export type orphanageUpdateInput = {
@@ -6798,11 +6840,12 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     instructions?: StringFieldUpdateOperationsInput | string
     acept_weekend?: BoolFieldUpdateOperationsInput | boolean
-    phone?: StringFieldUpdateOperationsInput | string
     acepted?: BoolFieldUpdateOperationsInput | boolean
+    phone?: StringFieldUpdateOperationsInput | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hours?: hoursUpdateManyWithoutOrphanageNestedInput
     location?: locationUpdateOneRequiredWithoutOrphanageNestedInput
     pictures?: pictureUpdateManyWithoutOrphanageNestedInput
-    hours?: hoursUpdateManyWithoutOrphanageNestedInput
   }
 
   export type orphanageUncheckedUpdateInput = {
@@ -6811,11 +6854,12 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     instructions?: StringFieldUpdateOperationsInput | string
     acept_weekend?: BoolFieldUpdateOperationsInput | boolean
-    phone?: StringFieldUpdateOperationsInput | string
     acepted?: BoolFieldUpdateOperationsInput | boolean
     id_location?: IntFieldUpdateOperationsInput | number
-    pictures?: pictureUncheckedUpdateManyWithoutOrphanageNestedInput
+    phone?: StringFieldUpdateOperationsInput | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hours?: hoursUncheckedUpdateManyWithoutOrphanageNestedInput
+    pictures?: pictureUncheckedUpdateManyWithoutOrphanageNestedInput
   }
 
   export type orphanageCreateManyInput = {
@@ -6824,9 +6868,10 @@ export namespace Prisma {
     about: string
     instructions: string
     acept_weekend: boolean
-    phone?: string
     acepted?: boolean
     id_location: number
+    phone?: string
+    deletedAt?: Date | string | null
   }
 
   export type orphanageUpdateManyMutationInput = {
@@ -6834,8 +6879,9 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     instructions?: StringFieldUpdateOperationsInput | string
     acept_weekend?: BoolFieldUpdateOperationsInput | boolean
-    phone?: StringFieldUpdateOperationsInput | string
     acepted?: BoolFieldUpdateOperationsInput | boolean
+    phone?: StringFieldUpdateOperationsInput | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type orphanageUncheckedUpdateManyInput = {
@@ -6844,9 +6890,10 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     instructions?: StringFieldUpdateOperationsInput | string
     acept_weekend?: BoolFieldUpdateOperationsInput | boolean
-    phone?: StringFieldUpdateOperationsInput | string
     acepted?: BoolFieldUpdateOperationsInput | boolean
     id_location?: IntFieldUpdateOperationsInput | number
+    phone?: StringFieldUpdateOperationsInput | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type pictureCreateInput = {
@@ -6888,48 +6935,48 @@ export namespace Prisma {
   }
 
   export type hoursCreateInput = {
-    initial_hour: string
     final_hour: string
+    initial_hour: string
     orphanage: orphanageCreateNestedOneWithoutHoursInput
   }
 
   export type hoursUncheckedCreateInput = {
     id?: number
-    initial_hour: string
-    final_hour: string
     id_orphanage: number
+    final_hour: string
+    initial_hour: string
   }
 
   export type hoursUpdateInput = {
-    initial_hour?: StringFieldUpdateOperationsInput | string
     final_hour?: StringFieldUpdateOperationsInput | string
+    initial_hour?: StringFieldUpdateOperationsInput | string
     orphanage?: orphanageUpdateOneRequiredWithoutHoursNestedInput
   }
 
   export type hoursUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    initial_hour?: StringFieldUpdateOperationsInput | string
-    final_hour?: StringFieldUpdateOperationsInput | string
     id_orphanage?: IntFieldUpdateOperationsInput | number
+    final_hour?: StringFieldUpdateOperationsInput | string
+    initial_hour?: StringFieldUpdateOperationsInput | string
   }
 
   export type hoursCreateManyInput = {
     id?: number
-    initial_hour: string
-    final_hour: string
     id_orphanage: number
+    final_hour: string
+    initial_hour: string
   }
 
   export type hoursUpdateManyMutationInput = {
-    initial_hour?: StringFieldUpdateOperationsInput | string
     final_hour?: StringFieldUpdateOperationsInput | string
+    initial_hour?: StringFieldUpdateOperationsInput | string
   }
 
   export type hoursUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    initial_hour?: StringFieldUpdateOperationsInput | string
-    final_hour?: StringFieldUpdateOperationsInput | string
     id_orphanage?: IntFieldUpdateOperationsInput | number
+    final_hour?: StringFieldUpdateOperationsInput | string
+    initial_hour?: StringFieldUpdateOperationsInput | string
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -7093,6 +7140,23 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type HoursListRelationFilter = {
+    every?: hoursWhereInput
+    some?: hoursWhereInput
+    none?: hoursWhereInput
+  }
+
   export type LocationRelationFilter = {
     is?: locationWhereInput
     isNot?: locationWhereInput
@@ -7104,17 +7168,16 @@ export namespace Prisma {
     none?: pictureWhereInput
   }
 
-  export type HoursListRelationFilter = {
-    every?: hoursWhereInput
-    some?: hoursWhereInput
-    none?: hoursWhereInput
-  }
-
-  export type pictureOrderByRelationAggregateInput = {
-    _count?: SortOrder
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type hoursOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type pictureOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -7124,9 +7187,10 @@ export namespace Prisma {
     about?: SortOrder
     instructions?: SortOrder
     acept_weekend?: SortOrder
-    phone?: SortOrder
     acepted?: SortOrder
     id_location?: SortOrder
+    phone?: SortOrder
+    deletedAt?: SortOrder
   }
 
   export type orphanageAvgOrderByAggregateInput = {
@@ -7140,9 +7204,10 @@ export namespace Prisma {
     about?: SortOrder
     instructions?: SortOrder
     acept_weekend?: SortOrder
-    phone?: SortOrder
     acepted?: SortOrder
     id_location?: SortOrder
+    phone?: SortOrder
+    deletedAt?: SortOrder
   }
 
   export type orphanageMinOrderByAggregateInput = {
@@ -7151,9 +7216,10 @@ export namespace Prisma {
     about?: SortOrder
     instructions?: SortOrder
     acept_weekend?: SortOrder
-    phone?: SortOrder
     acepted?: SortOrder
     id_location?: SortOrder
+    phone?: SortOrder
+    deletedAt?: SortOrder
   }
 
   export type orphanageSumOrderByAggregateInput = {
@@ -7167,6 +7233,20 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type OrphanageRelationFilter = {
@@ -7204,9 +7284,9 @@ export namespace Prisma {
 
   export type hoursCountOrderByAggregateInput = {
     id?: SortOrder
-    initial_hour?: SortOrder
-    final_hour?: SortOrder
     id_orphanage?: SortOrder
+    final_hour?: SortOrder
+    initial_hour?: SortOrder
   }
 
   export type hoursAvgOrderByAggregateInput = {
@@ -7216,16 +7296,16 @@ export namespace Prisma {
 
   export type hoursMaxOrderByAggregateInput = {
     id?: SortOrder
-    initial_hour?: SortOrder
-    final_hour?: SortOrder
     id_orphanage?: SortOrder
+    final_hour?: SortOrder
+    initial_hour?: SortOrder
   }
 
   export type hoursMinOrderByAggregateInput = {
     id?: SortOrder
-    initial_hour?: SortOrder
-    final_hour?: SortOrder
     id_orphanage?: SortOrder
+    final_hour?: SortOrder
+    initial_hour?: SortOrder
   }
 
   export type hoursSumOrderByAggregateInput = {
@@ -7295,6 +7375,13 @@ export namespace Prisma {
     deleteMany?: orphanageScalarWhereInput | orphanageScalarWhereInput[]
   }
 
+  export type hoursCreateNestedManyWithoutOrphanageInput = {
+    create?: XOR<hoursCreateWithoutOrphanageInput, hoursUncheckedCreateWithoutOrphanageInput> | hoursCreateWithoutOrphanageInput[] | hoursUncheckedCreateWithoutOrphanageInput[]
+    connectOrCreate?: hoursCreateOrConnectWithoutOrphanageInput | hoursCreateOrConnectWithoutOrphanageInput[]
+    createMany?: hoursCreateManyOrphanageInputEnvelope
+    connect?: hoursWhereUniqueInput | hoursWhereUniqueInput[]
+  }
+
   export type locationCreateNestedOneWithoutOrphanageInput = {
     create?: XOR<locationCreateWithoutOrphanageInput, locationUncheckedCreateWithoutOrphanageInput>
     connectOrCreate?: locationCreateOrConnectWithoutOrphanageInput
@@ -7308,7 +7395,7 @@ export namespace Prisma {
     connect?: pictureWhereUniqueInput | pictureWhereUniqueInput[]
   }
 
-  export type hoursCreateNestedManyWithoutOrphanageInput = {
+  export type hoursUncheckedCreateNestedManyWithoutOrphanageInput = {
     create?: XOR<hoursCreateWithoutOrphanageInput, hoursUncheckedCreateWithoutOrphanageInput> | hoursCreateWithoutOrphanageInput[] | hoursUncheckedCreateWithoutOrphanageInput[]
     connectOrCreate?: hoursCreateOrConnectWithoutOrphanageInput | hoursCreateOrConnectWithoutOrphanageInput[]
     createMany?: hoursCreateManyOrphanageInputEnvelope
@@ -7322,37 +7409,12 @@ export namespace Prisma {
     connect?: pictureWhereUniqueInput | pictureWhereUniqueInput[]
   }
 
-  export type hoursUncheckedCreateNestedManyWithoutOrphanageInput = {
-    create?: XOR<hoursCreateWithoutOrphanageInput, hoursUncheckedCreateWithoutOrphanageInput> | hoursCreateWithoutOrphanageInput[] | hoursUncheckedCreateWithoutOrphanageInput[]
-    connectOrCreate?: hoursCreateOrConnectWithoutOrphanageInput | hoursCreateOrConnectWithoutOrphanageInput[]
-    createMany?: hoursCreateManyOrphanageInputEnvelope
-    connect?: hoursWhereUniqueInput | hoursWhereUniqueInput[]
-  }
-
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
   }
 
-  export type locationUpdateOneRequiredWithoutOrphanageNestedInput = {
-    create?: XOR<locationCreateWithoutOrphanageInput, locationUncheckedCreateWithoutOrphanageInput>
-    connectOrCreate?: locationCreateOrConnectWithoutOrphanageInput
-    upsert?: locationUpsertWithoutOrphanageInput
-    connect?: locationWhereUniqueInput
-    update?: XOR<XOR<locationUpdateToOneWithWhereWithoutOrphanageInput, locationUpdateWithoutOrphanageInput>, locationUncheckedUpdateWithoutOrphanageInput>
-  }
-
-  export type pictureUpdateManyWithoutOrphanageNestedInput = {
-    create?: XOR<pictureCreateWithoutOrphanageInput, pictureUncheckedCreateWithoutOrphanageInput> | pictureCreateWithoutOrphanageInput[] | pictureUncheckedCreateWithoutOrphanageInput[]
-    connectOrCreate?: pictureCreateOrConnectWithoutOrphanageInput | pictureCreateOrConnectWithoutOrphanageInput[]
-    upsert?: pictureUpsertWithWhereUniqueWithoutOrphanageInput | pictureUpsertWithWhereUniqueWithoutOrphanageInput[]
-    createMany?: pictureCreateManyOrphanageInputEnvelope
-    set?: pictureWhereUniqueInput | pictureWhereUniqueInput[]
-    disconnect?: pictureWhereUniqueInput | pictureWhereUniqueInput[]
-    delete?: pictureWhereUniqueInput | pictureWhereUniqueInput[]
-    connect?: pictureWhereUniqueInput | pictureWhereUniqueInput[]
-    update?: pictureUpdateWithWhereUniqueWithoutOrphanageInput | pictureUpdateWithWhereUniqueWithoutOrphanageInput[]
-    updateMany?: pictureUpdateManyWithWhereWithoutOrphanageInput | pictureUpdateManyWithWhereWithoutOrphanageInput[]
-    deleteMany?: pictureScalarWhereInput | pictureScalarWhereInput[]
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
   }
 
   export type hoursUpdateManyWithoutOrphanageNestedInput = {
@@ -7369,7 +7431,15 @@ export namespace Prisma {
     deleteMany?: hoursScalarWhereInput | hoursScalarWhereInput[]
   }
 
-  export type pictureUncheckedUpdateManyWithoutOrphanageNestedInput = {
+  export type locationUpdateOneRequiredWithoutOrphanageNestedInput = {
+    create?: XOR<locationCreateWithoutOrphanageInput, locationUncheckedCreateWithoutOrphanageInput>
+    connectOrCreate?: locationCreateOrConnectWithoutOrphanageInput
+    upsert?: locationUpsertWithoutOrphanageInput
+    connect?: locationWhereUniqueInput
+    update?: XOR<XOR<locationUpdateToOneWithWhereWithoutOrphanageInput, locationUpdateWithoutOrphanageInput>, locationUncheckedUpdateWithoutOrphanageInput>
+  }
+
+  export type pictureUpdateManyWithoutOrphanageNestedInput = {
     create?: XOR<pictureCreateWithoutOrphanageInput, pictureUncheckedCreateWithoutOrphanageInput> | pictureCreateWithoutOrphanageInput[] | pictureUncheckedCreateWithoutOrphanageInput[]
     connectOrCreate?: pictureCreateOrConnectWithoutOrphanageInput | pictureCreateOrConnectWithoutOrphanageInput[]
     upsert?: pictureUpsertWithWhereUniqueWithoutOrphanageInput | pictureUpsertWithWhereUniqueWithoutOrphanageInput[]
@@ -7395,6 +7465,20 @@ export namespace Prisma {
     update?: hoursUpdateWithWhereUniqueWithoutOrphanageInput | hoursUpdateWithWhereUniqueWithoutOrphanageInput[]
     updateMany?: hoursUpdateManyWithWhereWithoutOrphanageInput | hoursUpdateManyWithWhereWithoutOrphanageInput[]
     deleteMany?: hoursScalarWhereInput | hoursScalarWhereInput[]
+  }
+
+  export type pictureUncheckedUpdateManyWithoutOrphanageNestedInput = {
+    create?: XOR<pictureCreateWithoutOrphanageInput, pictureUncheckedCreateWithoutOrphanageInput> | pictureCreateWithoutOrphanageInput[] | pictureUncheckedCreateWithoutOrphanageInput[]
+    connectOrCreate?: pictureCreateOrConnectWithoutOrphanageInput | pictureCreateOrConnectWithoutOrphanageInput[]
+    upsert?: pictureUpsertWithWhereUniqueWithoutOrphanageInput | pictureUpsertWithWhereUniqueWithoutOrphanageInput[]
+    createMany?: pictureCreateManyOrphanageInputEnvelope
+    set?: pictureWhereUniqueInput | pictureWhereUniqueInput[]
+    disconnect?: pictureWhereUniqueInput | pictureWhereUniqueInput[]
+    delete?: pictureWhereUniqueInput | pictureWhereUniqueInput[]
+    connect?: pictureWhereUniqueInput | pictureWhereUniqueInput[]
+    update?: pictureUpdateWithWhereUniqueWithoutOrphanageInput | pictureUpdateWithWhereUniqueWithoutOrphanageInput[]
+    updateMany?: pictureUpdateManyWithWhereWithoutOrphanageInput | pictureUpdateManyWithWhereWithoutOrphanageInput[]
+    deleteMany?: pictureScalarWhereInput | pictureScalarWhereInput[]
   }
 
   export type orphanageCreateNestedOneWithoutPicturesInput = {
@@ -7526,6 +7610,17 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
@@ -7534,15 +7629,41 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type orphanageCreateWithoutLocationInput = {
     name: string
     about: string
     instructions: string
     acept_weekend: boolean
-    phone?: string
     acepted?: boolean
-    pictures?: pictureCreateNestedManyWithoutOrphanageInput
+    phone?: string
+    deletedAt?: Date | string | null
     hours?: hoursCreateNestedManyWithoutOrphanageInput
+    pictures?: pictureCreateNestedManyWithoutOrphanageInput
   }
 
   export type orphanageUncheckedCreateWithoutLocationInput = {
@@ -7551,10 +7672,11 @@ export namespace Prisma {
     about: string
     instructions: string
     acept_weekend: boolean
-    phone?: string
     acepted?: boolean
-    pictures?: pictureUncheckedCreateNestedManyWithoutOrphanageInput
+    phone?: string
+    deletedAt?: Date | string | null
     hours?: hoursUncheckedCreateNestedManyWithoutOrphanageInput
+    pictures?: pictureUncheckedCreateNestedManyWithoutOrphanageInput
   }
 
   export type orphanageCreateOrConnectWithoutLocationInput = {
@@ -7592,9 +7714,31 @@ export namespace Prisma {
     about?: StringFilter<"orphanage"> | string
     instructions?: StringFilter<"orphanage"> | string
     acept_weekend?: BoolFilter<"orphanage"> | boolean
-    phone?: StringFilter<"orphanage"> | string
     acepted?: BoolFilter<"orphanage"> | boolean
     id_location?: IntFilter<"orphanage"> | number
+    phone?: StringFilter<"orphanage"> | string
+    deletedAt?: DateTimeNullableFilter<"orphanage"> | Date | string | null
+  }
+
+  export type hoursCreateWithoutOrphanageInput = {
+    final_hour: string
+    initial_hour: string
+  }
+
+  export type hoursUncheckedCreateWithoutOrphanageInput = {
+    id?: number
+    final_hour: string
+    initial_hour: string
+  }
+
+  export type hoursCreateOrConnectWithoutOrphanageInput = {
+    where: hoursWhereUniqueInput
+    create: XOR<hoursCreateWithoutOrphanageInput, hoursUncheckedCreateWithoutOrphanageInput>
+  }
+
+  export type hoursCreateManyOrphanageInputEnvelope = {
+    data: hoursCreateManyOrphanageInput | hoursCreateManyOrphanageInput[]
+    skipDuplicates?: boolean
   }
 
   export type locationCreateWithoutOrphanageInput = {
@@ -7632,25 +7776,30 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type hoursCreateWithoutOrphanageInput = {
-    initial_hour: string
-    final_hour: string
-  }
-
-  export type hoursUncheckedCreateWithoutOrphanageInput = {
-    id?: number
-    initial_hour: string
-    final_hour: string
-  }
-
-  export type hoursCreateOrConnectWithoutOrphanageInput = {
+  export type hoursUpsertWithWhereUniqueWithoutOrphanageInput = {
     where: hoursWhereUniqueInput
+    update: XOR<hoursUpdateWithoutOrphanageInput, hoursUncheckedUpdateWithoutOrphanageInput>
     create: XOR<hoursCreateWithoutOrphanageInput, hoursUncheckedCreateWithoutOrphanageInput>
   }
 
-  export type hoursCreateManyOrphanageInputEnvelope = {
-    data: hoursCreateManyOrphanageInput | hoursCreateManyOrphanageInput[]
-    skipDuplicates?: boolean
+  export type hoursUpdateWithWhereUniqueWithoutOrphanageInput = {
+    where: hoursWhereUniqueInput
+    data: XOR<hoursUpdateWithoutOrphanageInput, hoursUncheckedUpdateWithoutOrphanageInput>
+  }
+
+  export type hoursUpdateManyWithWhereWithoutOrphanageInput = {
+    where: hoursScalarWhereInput
+    data: XOR<hoursUpdateManyMutationInput, hoursUncheckedUpdateManyWithoutOrphanageInput>
+  }
+
+  export type hoursScalarWhereInput = {
+    AND?: hoursScalarWhereInput | hoursScalarWhereInput[]
+    OR?: hoursScalarWhereInput[]
+    NOT?: hoursScalarWhereInput | hoursScalarWhereInput[]
+    id?: IntFilter<"hours"> | number
+    id_orphanage?: IntFilter<"hours"> | number
+    final_hour?: StringFilter<"hours"> | string
+    initial_hour?: StringFilter<"hours"> | string
   }
 
   export type locationUpsertWithoutOrphanageInput = {
@@ -7700,41 +7849,16 @@ export namespace Prisma {
     id_orphanage?: IntFilter<"picture"> | number
   }
 
-  export type hoursUpsertWithWhereUniqueWithoutOrphanageInput = {
-    where: hoursWhereUniqueInput
-    update: XOR<hoursUpdateWithoutOrphanageInput, hoursUncheckedUpdateWithoutOrphanageInput>
-    create: XOR<hoursCreateWithoutOrphanageInput, hoursUncheckedCreateWithoutOrphanageInput>
-  }
-
-  export type hoursUpdateWithWhereUniqueWithoutOrphanageInput = {
-    where: hoursWhereUniqueInput
-    data: XOR<hoursUpdateWithoutOrphanageInput, hoursUncheckedUpdateWithoutOrphanageInput>
-  }
-
-  export type hoursUpdateManyWithWhereWithoutOrphanageInput = {
-    where: hoursScalarWhereInput
-    data: XOR<hoursUpdateManyMutationInput, hoursUncheckedUpdateManyWithoutOrphanageInput>
-  }
-
-  export type hoursScalarWhereInput = {
-    AND?: hoursScalarWhereInput | hoursScalarWhereInput[]
-    OR?: hoursScalarWhereInput[]
-    NOT?: hoursScalarWhereInput | hoursScalarWhereInput[]
-    id?: IntFilter<"hours"> | number
-    initial_hour?: StringFilter<"hours"> | string
-    final_hour?: StringFilter<"hours"> | string
-    id_orphanage?: IntFilter<"hours"> | number
-  }
-
   export type orphanageCreateWithoutPicturesInput = {
     name: string
     about: string
     instructions: string
     acept_weekend: boolean
-    phone?: string
     acepted?: boolean
-    location: locationCreateNestedOneWithoutOrphanageInput
+    phone?: string
+    deletedAt?: Date | string | null
     hours?: hoursCreateNestedManyWithoutOrphanageInput
+    location: locationCreateNestedOneWithoutOrphanageInput
   }
 
   export type orphanageUncheckedCreateWithoutPicturesInput = {
@@ -7743,9 +7867,10 @@ export namespace Prisma {
     about: string
     instructions: string
     acept_weekend: boolean
-    phone?: string
     acepted?: boolean
     id_location: number
+    phone?: string
+    deletedAt?: Date | string | null
     hours?: hoursUncheckedCreateNestedManyWithoutOrphanageInput
   }
 
@@ -7770,10 +7895,11 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     instructions?: StringFieldUpdateOperationsInput | string
     acept_weekend?: BoolFieldUpdateOperationsInput | boolean
-    phone?: StringFieldUpdateOperationsInput | string
     acepted?: BoolFieldUpdateOperationsInput | boolean
-    location?: locationUpdateOneRequiredWithoutOrphanageNestedInput
+    phone?: StringFieldUpdateOperationsInput | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hours?: hoursUpdateManyWithoutOrphanageNestedInput
+    location?: locationUpdateOneRequiredWithoutOrphanageNestedInput
   }
 
   export type orphanageUncheckedUpdateWithoutPicturesInput = {
@@ -7782,9 +7908,10 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     instructions?: StringFieldUpdateOperationsInput | string
     acept_weekend?: BoolFieldUpdateOperationsInput | boolean
-    phone?: StringFieldUpdateOperationsInput | string
     acepted?: BoolFieldUpdateOperationsInput | boolean
     id_location?: IntFieldUpdateOperationsInput | number
+    phone?: StringFieldUpdateOperationsInput | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hours?: hoursUncheckedUpdateManyWithoutOrphanageNestedInput
   }
 
@@ -7793,8 +7920,9 @@ export namespace Prisma {
     about: string
     instructions: string
     acept_weekend: boolean
-    phone?: string
     acepted?: boolean
+    phone?: string
+    deletedAt?: Date | string | null
     location: locationCreateNestedOneWithoutOrphanageInput
     pictures?: pictureCreateNestedManyWithoutOrphanageInput
   }
@@ -7805,9 +7933,10 @@ export namespace Prisma {
     about: string
     instructions: string
     acept_weekend: boolean
-    phone?: string
     acepted?: boolean
     id_location: number
+    phone?: string
+    deletedAt?: Date | string | null
     pictures?: pictureUncheckedCreateNestedManyWithoutOrphanageInput
   }
 
@@ -7832,8 +7961,9 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     instructions?: StringFieldUpdateOperationsInput | string
     acept_weekend?: BoolFieldUpdateOperationsInput | boolean
-    phone?: StringFieldUpdateOperationsInput | string
     acepted?: BoolFieldUpdateOperationsInput | boolean
+    phone?: StringFieldUpdateOperationsInput | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: locationUpdateOneRequiredWithoutOrphanageNestedInput
     pictures?: pictureUpdateManyWithoutOrphanageNestedInput
   }
@@ -7844,9 +7974,10 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     instructions?: StringFieldUpdateOperationsInput | string
     acept_weekend?: BoolFieldUpdateOperationsInput | boolean
-    phone?: StringFieldUpdateOperationsInput | string
     acepted?: BoolFieldUpdateOperationsInput | boolean
     id_location?: IntFieldUpdateOperationsInput | number
+    phone?: StringFieldUpdateOperationsInput | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     pictures?: pictureUncheckedUpdateManyWithoutOrphanageNestedInput
   }
 
@@ -7856,8 +7987,9 @@ export namespace Prisma {
     about: string
     instructions: string
     acept_weekend: boolean
-    phone?: string
     acepted?: boolean
+    phone?: string
+    deletedAt?: Date | string | null
   }
 
   export type orphanageUpdateWithoutLocationInput = {
@@ -7865,10 +7997,11 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     instructions?: StringFieldUpdateOperationsInput | string
     acept_weekend?: BoolFieldUpdateOperationsInput | boolean
-    phone?: StringFieldUpdateOperationsInput | string
     acepted?: BoolFieldUpdateOperationsInput | boolean
-    pictures?: pictureUpdateManyWithoutOrphanageNestedInput
+    phone?: StringFieldUpdateOperationsInput | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hours?: hoursUpdateManyWithoutOrphanageNestedInput
+    pictures?: pictureUpdateManyWithoutOrphanageNestedInput
   }
 
   export type orphanageUncheckedUpdateWithoutLocationInput = {
@@ -7877,10 +8010,11 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     instructions?: StringFieldUpdateOperationsInput | string
     acept_weekend?: BoolFieldUpdateOperationsInput | boolean
-    phone?: StringFieldUpdateOperationsInput | string
     acepted?: BoolFieldUpdateOperationsInput | boolean
-    pictures?: pictureUncheckedUpdateManyWithoutOrphanageNestedInput
+    phone?: StringFieldUpdateOperationsInput | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hours?: hoursUncheckedUpdateManyWithoutOrphanageNestedInput
+    pictures?: pictureUncheckedUpdateManyWithoutOrphanageNestedInput
   }
 
   export type orphanageUncheckedUpdateManyWithoutLocationInput = {
@@ -7889,8 +8023,15 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     instructions?: StringFieldUpdateOperationsInput | string
     acept_weekend?: BoolFieldUpdateOperationsInput | boolean
-    phone?: StringFieldUpdateOperationsInput | string
     acepted?: BoolFieldUpdateOperationsInput | boolean
+    phone?: StringFieldUpdateOperationsInput | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type hoursCreateManyOrphanageInput = {
+    id?: number
+    final_hour: string
+    initial_hour: string
   }
 
   export type pictureCreateManyOrphanageInput = {
@@ -7898,10 +8039,21 @@ export namespace Prisma {
     url: string
   }
 
-  export type hoursCreateManyOrphanageInput = {
-    id?: number
-    initial_hour: string
-    final_hour: string
+  export type hoursUpdateWithoutOrphanageInput = {
+    final_hour?: StringFieldUpdateOperationsInput | string
+    initial_hour?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type hoursUncheckedUpdateWithoutOrphanageInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    final_hour?: StringFieldUpdateOperationsInput | string
+    initial_hour?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type hoursUncheckedUpdateManyWithoutOrphanageInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    final_hour?: StringFieldUpdateOperationsInput | string
+    initial_hour?: StringFieldUpdateOperationsInput | string
   }
 
   export type pictureUpdateWithoutOrphanageInput = {
@@ -7916,23 +8068,6 @@ export namespace Prisma {
   export type pictureUncheckedUpdateManyWithoutOrphanageInput = {
     id?: IntFieldUpdateOperationsInput | number
     url?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type hoursUpdateWithoutOrphanageInput = {
-    initial_hour?: StringFieldUpdateOperationsInput | string
-    final_hour?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type hoursUncheckedUpdateWithoutOrphanageInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    initial_hour?: StringFieldUpdateOperationsInput | string
-    final_hour?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type hoursUncheckedUpdateManyWithoutOrphanageInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    initial_hour?: StringFieldUpdateOperationsInput | string
-    final_hour?: StringFieldUpdateOperationsInput | string
   }
 
 

@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
   output   = "./generated/client"
@@ -15,44 +9,45 @@ datasource db {
 }
 
 model admin {
-  id       Int    @id() @default(autoincrement())
+  id       Int    @id @default(autoincrement())
   name     String
   email    String @unique
   password String
 }
 
 model location {
-  id        Int         @id() @default(autoincrement())
-  latitude  Decimal     @db.Decimal()
-  longitude Decimal     @db.Decimal()
+  id        Int         @id @default(autoincrement())
+  latitude  Decimal     @db.Decimal
+  longitude Decimal     @db.Decimal
   orphanage orphanage[]
 }
 
 model orphanage {
-  id            Int       @id() @default(autoincrement())
+  id            Int       @id @default(autoincrement())
   name          String
-  about         String    @db.Text
-  instructions  String    @db.Text
-  acept_weekend Boolean   @db.Boolean
-  phone         String    @default(dbgenerated("0"))
-  acepted       Boolean   @default(false) @db.Boolean
-  location      location  @relation(fields: [id_location], references: [id])
+  about         String
+  instructions  String
+  acept_weekend Boolean
+  acepted       Boolean   @default(false)
   id_location   Int
-  pictures      picture[]
+  phone         String    @default(dbgenerated("0"))
   hours         hours[]
+  deletedAt     DateTime?
+  location      location  @relation(fields: [id_location], references: [id])
+  pictures      picture[]
 }
 
 model picture {
-  id           Int       @id() @default(autoincrement())
+  id           Int       @id @default(autoincrement())
   url          String
-  orphanage    orphanage @relation(fields: [id_orphanage], references: [id])
   id_orphanage Int
+  orphanage    orphanage @relation(fields: [id_orphanage], references: [id])
 }
 
 model hours {
-  id           Int       @id() @default(autoincrement())
-  initial_hour String
-  final_hour   String
-  orphanage    orphanage @relation(fields: [id_orphanage], references: [id])
+  id           Int       @id @default(autoincrement())
   id_orphanage Int
+  final_hour   String
+  initial_hour String
+  orphanage    orphanage @relation(fields: [id_orphanage], references: [id])
 }

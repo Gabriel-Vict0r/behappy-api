@@ -138,9 +138,10 @@ exports.Prisma.OrphanageScalarFieldEnum = {
   about: 'about',
   instructions: 'instructions',
   acept_weekend: 'acept_weekend',
-  phone: 'phone',
   acepted: 'acepted',
-  id_location: 'id_location'
+  id_location: 'id_location',
+  phone: 'phone',
+  deletedAt: 'deletedAt'
 };
 
 exports.Prisma.PictureScalarFieldEnum = {
@@ -151,9 +152,9 @@ exports.Prisma.PictureScalarFieldEnum = {
 
 exports.Prisma.HoursScalarFieldEnum = {
   id: 'id',
-  initial_hour: 'initial_hour',
+  id_orphanage: 'id_orphanage',
   final_hour: 'final_hour',
-  id_orphanage: 'id_orphanage'
+  initial_hour: 'initial_hour'
 };
 
 exports.Prisma.SortOrder = {
@@ -164,6 +165,11 @@ exports.Prisma.SortOrder = {
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 
 
