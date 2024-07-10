@@ -14,6 +14,7 @@ import { AuthAdminController } from './controllers/AuthAdminController'
 import { UpdateOrphanageController } from './controllers/UpdateOrphanageController'
 import { AceptOrphanageController } from './controllers/AceptOrphanageController'
 import { DisableOrphanageController } from './controllers/DisableOrphanageController'
+import { GetPendingOrphanageController } from './controllers/GetPendingOrphanageController'
 const routes = Router()
 
 const upload = multer(multerConfig);
@@ -34,6 +35,10 @@ routes.get('/v1/get-orphanages',
 
 routes.get('/v1/get-orphanage/:id',
     new GetOrphanageCompleteController().handle,
+)
+
+routes.get('/v1/get-pending',
+    new GetPendingOrphanageController().handle
 )
 
 //rotas admin
