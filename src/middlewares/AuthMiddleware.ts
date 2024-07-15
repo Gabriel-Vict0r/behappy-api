@@ -6,7 +6,7 @@ import { PrismaClient } from "../prisma/generated/client";
 export class AuthMiddleware {
     async handle(req: Request, res: Response, next: NextFunction) {
         const { authorization } = req.headers
-
+        console.log(authorization);
         if (!authorization) {
             return res.status(401).json({ message: 'não autorizado' })
         }
