@@ -37,7 +37,8 @@ export class UpdateOrphanageService {
                         about: orphanage.about,
                         instructions: orphanage.instructions,
                         acept_weekend: orphanage.acept_weekend,
-                        phone: orphanage.phone
+                        phone: orphanage.phone,
+                        acepted: orphanage.acepted
                     }
                 }),
                 prisma.location.update({
@@ -50,7 +51,7 @@ export class UpdateOrphanageService {
                 }),
                 prisma.hours.update({
                     where: {
-                        id: id
+                        id: getIdHour.id
                     },
                     data: {
                         ...orphanage.hours
