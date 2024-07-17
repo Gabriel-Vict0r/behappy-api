@@ -6,8 +6,9 @@
 <li>Node.Js</li>
 <li>Express.js</li>
 <li>Typescript</li>
-<li>Postgres</li>
+<li>PostgreSQL</li>
 <li>Prisma</li>
+<li>AWS S3</li>
 <li>JsonWebToken</li>
 </ul>
 <br>
@@ -218,6 +219,33 @@ Crie dois FormData, um contendo um objeto com as informações textuais e o outr
 		}
 	}
 ]
+</code>
+</pre></li>
+</ul>
+</li>
+</ul>
+
+
+<li><b>PUT - /v1/update-orphanage/:id : </b> Obtém os registros que estão pendentes (não foram aceitos/recusados).
+<ul>
+<li>Corpo da requisição:
+<pre>
+<code>
+{
+	"name": "string",
+	"about": "string",
+	"instructions": "string",
+	"acept_weekend": boolean,
+	"phone": "string",
+	"hours": {
+			"final_hour": "string",
+			"initial_hour": "string"
+		},
+	"location": {
+		"latitude": number,
+		"longitude": number
+	}
+}
 </code>
 </pre></li>
 </ul>
