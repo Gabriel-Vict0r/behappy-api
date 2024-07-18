@@ -17,7 +17,6 @@
 <li><a href="#instalacao">Instalação</a></li>
 <li><a href="#configuracao">Configuração</a></li>
 <li><a href="#rotas">Rotas</a></li>
-<li><a href="#exemplos">Exemplos de uso</a></li>
 </ul>
 
 <h4 id="instalacao">Instalação</h4>
@@ -252,4 +251,13 @@ Crie dois FormData, um contendo um objeto com as informações textuais e o outr
 </li>
 </ul>
 
-<h4 id="exemplos">Exemplos de uso</h4>
+
+<li><b>PATCH - /v1/disable-orphanage/:id : </b> Desabilita o registro que foi passado como parâmetro na URL. (atualiza a coluna deletedAt com a data atual).
+</li>
+<li><b>PATCH - /v1/reject-orphanage/:id : </b> Desabilita o registro que foi passado como parâmetro na URL. (atualiza a coluna acepted para false).
+</li>
+</ul>
+
+<h3>Licença</h3>
+<p>Este projeto está licenciado sob a Licença MIT. Veja o arquivo <a href="LICENSE">LICENSE</a> para mais detalhes.
+</p>
